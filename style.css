@@ -4,6 +4,11 @@
     float:right;
 }
 
+.bio {
+    padding: 5px;
+
+
+}
 .astronaut {
     border: 1px solid black;
     display: flex;

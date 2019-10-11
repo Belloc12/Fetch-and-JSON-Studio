@@ -4,13 +4,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Astronauts</title>
+    <script>
+        window.addEventListener("load", function(){
+          fetch("https://handlers.education.launchcode.org/static/astronauts.json").then(function(response){
+            response.json().then(function(json) {
+              const astronautGrouping = document.getElementById("astronautGrouping");
+              finishedString = ''
+              for (astronaut of json){
+                finishedString +=
+                `
+                <div class = "astronaut">
+                  <div class = "bio">
+                  <ul>
+                    <h3>${astronaut.firstName} ${astronaut.lastName}</h3>
+                    <li>Hours in Space:  ${astronaut.hoursInSpace}</li>
+                    <li>Active ${astronaut.active}</li>
+                    <li>Skills:${astronaut.skills.join(', ')}</li>
+                    </ul>
+                </div>
+                  <img class="avatar" src=${astronaut.picture}>
+                </div>
+                `
+                
+              }
+              astronautGrouping.innerHTML = finishedString
+            });
+          });
+        });
+     </script>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <script src="script.js"></script>
     <h1>Astronauts</h1>
-    <div id="container">
+    <div id="astronautGrouping">
         <!-- List of astronauts will be added here dynamically -->
     </div>
   </body>
 </html>
+
+
+
+<img class="avatar" src="images/mae-jemison.jpg">
+</div>
